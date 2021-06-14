@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), onClickItemListener {
         rvListNote.setAdapter(noteAdapter)
 
         //change mode List to Grid
-        modeList()
+        modeGrid()
 
         //get Data Catatan
         getNote(REQUEST_SHOW, false)

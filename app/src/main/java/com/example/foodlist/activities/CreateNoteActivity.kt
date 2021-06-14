@@ -25,8 +25,6 @@ import com.ahmadfariz.portalwisata.database.NoteDatabase
 import com.ahmadfariz.portalwisata.model.ModelNote
 import kotlinx.android.synthetic.main.activity_create_note.*
 import kotlinx.android.synthetic.main.layout_delete.*
-import kotlinx.android.synthetic.main.layout_url.*
-import kotlinx.android.synthetic.main.layout_url.view.*
 import java.util.*
 
 class CreateNoteActivity : AppCompatActivity() {
@@ -220,40 +218,6 @@ class CreateNoteActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         dialog.show()
-    }
-
-    private fun showDialogUrl() {
-        if (alertDialog == null) {
-            val builder = AlertDialog.Builder(this@CreateNoteActivity)
-            val view = LayoutInflater.from(this).inflate(R.layout.layout_url, findViewById(R.id.layoutUrl) as? ViewGroup)
-            builder.setView(view)
-
-            alertDialog = builder.create()
-            if (alertDialog?.window != null) {
-                alertDialog?.window?.setBackgroundDrawable(ColorDrawable(0))
-            }
-
-            val etUrl = view.editTextAddUrl
-            etUrl.requestFocus()
-
-            view.tvOk.setOnClickListener {
-                if (etUrl.text.toString().trim().isEmpty()) {
-                    Toast.makeText(this@CreateNoteActivity, "Masukan Url", Toast.LENGTH_SHORT).show()
-                } else if (!Patterns.WEB_URL.matcher(etUrl.text.toString()).matches()) {
-                    Toast.makeText(this@CreateNoteActivity, "Url Anda Tidak Benar", Toast.LENGTH_SHORT).show()
-                } else {
-                    tvUrlNote.text = etUrl.text.toString()
-                    tvUrlNote.visibility = View.VISIBLE
-                    btnHapusUrl.visibility = View.VISIBLE
-                    alertDialog?.dismiss()
-                }
-            }
-
-            view.tvBatal.setOnClickListener {
-                alertDialog?.dismiss()
-            }
-        }
-        alertDialog?.show()
     }
 
     companion object {
